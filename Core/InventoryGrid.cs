@@ -21,6 +21,8 @@ namespace KoalaDev.UGIS
         {
             List<Vector2Int> itemSlots = new ();
 
+            RemoveItem(invItem); // Removing Item from this Grid, if it's inside it.
+
             for (int y = position.y; y < position.y + invItem.Item.size.y; y++)
             {
                 for (int x = position.x; x < position.x + invItem.Item.size.x; x++)
@@ -67,7 +69,7 @@ namespace KoalaDev.UGIS
 
         #region - REMOVING ITEMS -
 
-        // Removes given item from grid if located, returns item removed if found
+        // Removes item at given position from grid if located, returns the item removed if found
         public InventoryItem RemoveItemAtPosition(Vector2Int position)
         {
             InventoryItem foundItem = items[position];
@@ -83,11 +85,12 @@ namespace KoalaDev.UGIS
             return foundItem;
         }
         
-        // True if Removed, False if Not.
+        // Removes given item from grid if found, false if item not in grid.
         public bool RemoveItem(InventoryItem item)
         {
             if (!item.InGrid(this)) return false;
             
+            // Removing all references to the item in this grid, but not from the item itself.
             foreach (Vector2Int slot in item.TakenSlots)
             {
                 items.Remove(slot);
