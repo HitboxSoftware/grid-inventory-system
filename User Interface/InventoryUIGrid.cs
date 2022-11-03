@@ -33,9 +33,6 @@ namespace KoalaDev.UGIS.UI
 
         // - Generated Objects -
         private readonly Dictionary<InventoryItem, InventoryUIItem> uiItems = new ();
-        
-        //TEMP
-        [SerializeField] private List<GenericItem> startingItems;
 
         #endregion
 
@@ -44,16 +41,10 @@ namespace KoalaDev.UGIS.UI
         private void Awake()
         {
             Init();
-            
-
         }
 
         private void Start()
         {
-            grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
-            grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
-            grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
-
             GenerateSlots();
             GenerateItems();
         }
@@ -86,7 +77,7 @@ namespace KoalaDev.UGIS.UI
         #region - GRID GENERATION -
 
         // Generates all the slots in the UI.
-        public bool GenerateSlots()
+        public void GenerateSlots()
         {
             for (int y = 0; y < grid.size.y; y++)
             {
@@ -101,11 +92,9 @@ namespace KoalaDev.UGIS.UI
             }
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-
-            return true;
         }
 
-        public bool GenerateItems()
+        public void GenerateItems()
         {
             ClearItems();
             foreach (InventoryItem invItem in grid.GetAllItems())
@@ -136,11 +125,12 @@ namespace KoalaDev.UGIS.UI
                 // --- Set Position to Average Position of Slots. ---
                 itemObj.GetComponent<RectTransform>().anchoredPosition = sum / invItem.TakenSlots.Length;
             }
-            return true;
         }
 
         #endregion
-        
+
+        #region - GRID UTILITIES -
+
         private void ClearItems()
         {
             foreach (InventoryUIItem item in uiItems.Values)
@@ -166,6 +156,8 @@ namespace KoalaDev.UGIS.UI
                 GenerateItems();
             }
         }
+
+        #endregion
 
         #endregion
     }
