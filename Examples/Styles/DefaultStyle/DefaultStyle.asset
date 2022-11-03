@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultStyle
   m_EditorClassIdentifier: 
   slotObj: {fileID: 4747618987845106621, guid: 4768dc7d018cbab459b6ef67f71e5907, type: 3}
-  itemObj: {fileID: 0}
+  itemObj: {fileID: 4747618987845106621, guid: 06ceec11096ed944bb6e520f408085bc, type: 3}
