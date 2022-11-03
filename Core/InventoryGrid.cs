@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KoalaDev.UGIS
@@ -13,6 +14,11 @@ namespace KoalaDev.UGIS
         #endregion
         
         #region --- METHODS ---
+
+        public InventoryItem[] GetAllItems()
+        {
+            return new HashSet<InventoryItem>(items.Values).ToArray();
+        }
 
         #region - ADDING ITEMS -
 
@@ -89,6 +95,8 @@ namespace KoalaDev.UGIS
         public bool RemoveItem(InventoryItem item)
         {
             if (!item.InGrid(this)) return false;
+
+            if (item.TakenSlots == null) return false;
             
             // Removing all references to the item in this grid, but not from the item itself.
             foreach (Vector2Int slot in item.TakenSlots)
