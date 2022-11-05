@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KoalaDev.UGIS.UI
 {
@@ -15,6 +16,10 @@ namespace KoalaDev.UGIS.UI
 
         [SerializeField] private Transform heldItemContainer;
 
+        public List<InventoryGrid> managedGrids;
+
+        public List<Item> startingItems;
+
         #endregion
 
         #region --- MONOBEHAVIOUR ---
@@ -27,8 +32,20 @@ namespace KoalaDev.UGIS.UI
             }
             
             Instance = this;
+
+            foreach (InventoryGrid grid in managedGrids)
+            {
+                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
+                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
+                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
+            }
         }
-        
+
+        private void Start()
+        {
+            
+        }
+
         private void Update()
         {
             if (heldItem != null)
