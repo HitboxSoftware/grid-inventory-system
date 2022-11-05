@@ -16,4 +16,9 @@ namespace KoalaDev.UGIS
         #endregion
     }
     
+    [Serializable]
+    public abstract class AdditionalItemData
+    {
+        
+    }
 }
