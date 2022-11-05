@@ -1,24 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using KoalaDev.UGIS;
+using KoalaDev.UGIS.UI;
 using UnityEngine;
 
 public class InventoryUIItem : MonoBehaviour
 {
     #region --- VARIABLES ---
 
-    
-
-    #endregion
-
-    #region --- MONOBEHAVIOUR ---
-
-    
-
-    #endregion
-
-    #region --- METHODS ---
-
-    
+    public InventoryItem InvItem;
+    public InventoryUIGrid uiGrid;
 
     #endregion
 }
