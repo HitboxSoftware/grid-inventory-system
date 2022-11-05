@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 
 namespace KoalaDev.UGIS
 {
-    public class InventoryItem
+    public class InventoryItem : ISerializationCallbackReceiver
     {
         #region --- VARIABLES ---
 
-        public readonly GenericItem Item;
+        public readonly Item Item;
+
         public Vector2Int[] TakenSlots; // All of the slots taken by this item. Index 0 is top left.
 
         private InventoryGrid parentGrid;
+
+        #region - RUNTIME DATA -
+
+        [NonSerialized]
+        public AdditionalItemData ItemData; // Runtime Data of the given item.
+        private string additionalItemData; // JSON Serialized ItemData
+        private string itemDataType;
+
+        #endregion
 
         #endregion
 
@@ -26,11 +35,28 @@ namespace KoalaDev.UGIS
 
         #region --- CONSTRUCTOR ---
         
-        public InventoryItem(GenericItem item, Vector2Int[] takenSlots, InventoryGrid parentGrid)
+        public InventoryItem(Item item, Vector2Int[] takenSlots, InventoryGrid parentGrid)
         {
             Item = item;
             TakenSlots = takenSlots;
             this.parentGrid = parentGrid;
+        }
+
+        #endregion
+        
+        #region --- SERIALISATIONCALLBACKS ---
+
+        public void OnBeforeSerialize()
+        {
+            if (ItemData == null) return;
+            additionalItemData = JsonUtility.ToJson(ItemData); 
+            itemDataType = ItemData.GetType().ToString(); // Used to get object type when deserializing data.
+        }
+
+        public void OnAfterDeserialize()
+        {
+            Type type = Type.GetType(itemDataType);
+            ItemData = (AdditionalItemData)JsonUtility.FromJson(additionalItemData, type);
         }
 
         #endregion

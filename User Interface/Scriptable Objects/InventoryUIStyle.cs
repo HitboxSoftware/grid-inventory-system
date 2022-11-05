@@ -16,6 +16,10 @@ namespace KoalaDev.UGIS.UI
         // Prefab used for each item in the grid.
         public GameObject itemObj;
 
+        [Header("Item Properties")] 
+        public bool highlightOnHover = false;
+        public Color slotHighlightColour = Color.white;
+
         #endregion
     }
 
