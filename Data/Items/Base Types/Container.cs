@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace KoalaDev.UGIS.Items
@@ -17,6 +18,12 @@ namespace KoalaDev.UGIS.Items
         public bool blacklistIsWhitelist; 
 
         #endregion
+    }
+
+    [Serializable]
+    public abstract class ContainerItemData : AdditionalItemData
+    {
+        private InventoryGrid containerGrid;
     }
 
 }
