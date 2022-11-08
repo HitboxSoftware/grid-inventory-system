@@ -20,6 +20,8 @@ namespace KoalaDev.UGIS.UI
 
         public List<Item> startingItems;
 
+        [SerializeField] private Color highlightColour;
+
         #region - INTERACTIONS -
 
         private InventoryUIContextMenu currentContextMenu;
@@ -78,7 +80,8 @@ namespace KoalaDev.UGIS.UI
         {
             if (currentContextMenu != null)
             {
-                currentContextMenu.RemoveMenu();
+                InventoryUIContextMenu.RemoveMenu();
+                UnselectItem();
             }
             
             if (heldItem == null && slot.containedItem != null)
@@ -97,7 +100,7 @@ namespace KoalaDev.UGIS.UI
             if (heldItem != null) return;
 
             InventoryUIItem invItem = slot.containedItem;
-            
+
             // --- Item Offsets ---
             Vector2Int heldItemGridOffset = slot.slotPosition - invItem.InvItem.TakenSlots[0];
             Vector3 heldItemMouseOffset = invItem.transform.position - Input.mousePosition;
@@ -111,6 +114,30 @@ namespace KoalaDev.UGIS.UI
 
             invItem.uiGrid.RemoveItem(invItem);
         }
+
+        private void SelectItem(InventoryUIItem item)
+        {
+            if (selectedItem != null)
+            {
+                UnselectItem();
+            }
+
+            if (item == null) return;
+
+            selectedItem = item; 
+            item.Highlight(highlightColour);
+        }
+
+        private void UnselectItem()
+        {
+            if (selectedItem == null) return;
+            
+            // Remove Current Context Menu, This could cause problems?
+            if (currentContextMenu != null) Destroy(currentContextMenu);
+
+            selectedItem.RemoveHighlight();
+            selectedItem = null;
+        }
         
         private void PlaceItem(InventoryUISlot slot) //Places Attached Item to Clicked Slot
         {
@@ -123,13 +150,15 @@ namespace KoalaDev.UGIS.UI
         {
             Debug.Log($"Dropped Item! {selectedItem.InvItem.Item.name}");
             selectedItem.uiGrid.RemoveItem(selectedItem, true);
-            selectedItem = null;
+            UnselectItem();
         }
 
         #endregion
 
         #region --- ITEM ACTIONS ---
-        
+
+        #region - CONTEXT MENU -
+
         public void CreateContextMenu(InventoryUISlot slot, Vector2 clickPos)
         {
             if (heldItem != null) return;
@@ -139,7 +168,7 @@ namespace KoalaDev.UGIS.UI
                 Destroy(currentContextMenu.gameObject);
             }
 
-            selectedItem = slot.containedItem;
+            SelectItem(slot.containedItem);
             
             if (selectedItem == null) return;
             
@@ -157,6 +186,16 @@ namespace KoalaDev.UGIS.UI
 
             currentContextMenu = contextMenu;
         }
+
+        public void RemoveContextMenu()
+        {
+            if (currentContextMenu == null) return;
+            
+            UnselectItem();
+            Destroy(currentContextMenu.gameObject);
+        }
+
+        #endregion
 
         #endregion
     }

@@ -11,7 +11,10 @@ public class InventoryUIItem : MonoBehaviour
     public InventoryItem InvItem;
     public InventoryUIGrid uiGrid;
 
-    [SerializeField] private Image inventoryIcon;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private Image itemBackground;
+
+    private Color backgroundColor;
 
     #endregion
 
@@ -19,10 +22,34 @@ public class InventoryUIItem : MonoBehaviour
 
     private void Start()
     {
-        if (inventoryIcon != null)
+        if (itemIcon != null)
         {
-            inventoryIcon.sprite = InvItem.Item.icon;
+            itemIcon.sprite = InvItem.Item.icon;
         }
+        
+        if (itemBackground == null)
+            TryGetComponent(out itemBackground);
+
+        if (itemBackground != null) 
+            backgroundColor = itemBackground.color;
+    }
+
+    #endregion
+
+    #region --- METHODS ---
+
+    public void Highlight(Color color)
+    {
+        if (itemBackground == null) return;
+
+        itemBackground.color = color;
+    }
+
+    public void RemoveHighlight()
+    {
+        if (itemBackground == null) return;
+
+        itemBackground.color = backgroundColor;
     }
 
     #endregion

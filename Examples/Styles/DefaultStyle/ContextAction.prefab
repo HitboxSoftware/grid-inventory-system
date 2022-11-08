@@ -270,5 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e39c4d81c00b8b4a9c1830a690e7873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 5014461722734782999}
   label: {fileID: 5014461722622663456}
+  btn: {fileID: 5014461722734782999}
+  action: {fileID: 0}
+  parentMenu: {fileID: 0}
