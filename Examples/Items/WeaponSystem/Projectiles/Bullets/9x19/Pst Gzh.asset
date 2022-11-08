@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3090169d28b042bc87b3640349894, type: 3}
+  m_Name: Pst Gzh
+  m_EditorClassIdentifier: 
+  size: {x: 1, y: 1}
+  icon: {fileID: 21300000, guid: a2a162bd9b44f3e4b9e51cc48bb6112d, type: 3}
+  worldObject: {fileID: 0}
+  InteractionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
+  stackCapacity: 0
+  bulletCaliber: {fileID: 11400000, guid: 26908ccd866339e48aa73e4ef7982fa5, type: 2}
+  muzzleVelocityOffset: 0
+  muzzleVelocityMultiplier: 1

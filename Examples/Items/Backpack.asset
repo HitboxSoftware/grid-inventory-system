@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a44a4f12dcc5d640a347266abed311e, type: 3}
   m_Name: Backpack
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 2}
-  icon: {fileID: 0}
+  size: {x: 3, y: 3}
+  icon: {fileID: 21300000, guid: 275a6c411f518f14d9207ea53ae7a988, type: 3}
   worldObject: {fileID: 0}
+  InteractionProfile: {fileID: 11400000, guid: 2685ee2979ab1f44ebfbcd5be23dfa00, type: 2}
   itemStorageSize: {x: 4, y: 4}
   itemBlacklist: []
   blacklistIsWhitelist: 0

@@ -160,7 +160,7 @@ namespace KoalaDev.UGIS.UI
 
         #endregion
     }
-    
+
     internal class HeldItemData // Used to store data related to the current held item (item attached to mouse cursor)
     {
         public readonly InventoryUIItem UIItem;

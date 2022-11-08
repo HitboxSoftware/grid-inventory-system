@@ -8,7 +8,8 @@ namespace KoalaDev.UGIS.Items
         // This sub-class of Item allows for items to have their own storage. Useful for clothing, or... Containers!
         
         #region --- VARIABLES ---
-        
+     
+        [Header("Container Properties")]
         public Vector2Int itemStorageSize;
 
         // List of items that aren't permitted inside the container.
