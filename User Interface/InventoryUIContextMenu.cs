@@ -47,9 +47,10 @@ namespace KoalaDev.UGIS.UI
             }
         }
 
-        public void RemoveMenu()
+        public static void RemoveMenu()
         {
-            Destroy(gameObject);
+            InventoryUIManager.Instance.RemoveContextMenu();
+            
         }
 
         #endregion

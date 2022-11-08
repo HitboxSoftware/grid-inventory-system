@@ -188,4 +188,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiGrid: {fileID: 0}
-  inventoryIcon: {fileID: 5538232812590263719}
+  itemIcon: {fileID: 5538232812590263719}
+  itemBackground: {fileID: 0}
