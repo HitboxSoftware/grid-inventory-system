@@ -9,12 +9,12 @@ namespace KoalaDev.UGIS
         #region --- VARIABLES ---
 
         public Vector2Int size = Vector2Int.one;
-        private readonly Dictionary<Vector2Int, InventoryItem> items = new Dictionary<Vector2Int, InventoryItem>();
+        private readonly Dictionary<Vector2Int, InventoryItem> items = new ();
 
         #endregion
         
         #region --- METHODS ---
-
+        
         public InventoryItem[] GetAllItems()
         {
             return new HashSet<InventoryItem>(items.Values).ToArray();
@@ -35,7 +35,7 @@ namespace KoalaDev.UGIS
                 {
                     Vector2Int newPos = new (x, y);
 
-                    if (items.ContainsKey(newPos) || (newPos.x >= size.x || newPos.y >= size.y)) return false;
+                    if (items.ContainsKey(newPos) || newPos.x >= size.x || newPos.y >= size.y || newPos.x < 0 || newPos.y < 0) return false;
 
                     itemSlots.Add(newPos);
                 }

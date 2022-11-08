@@ -153,7 +153,7 @@ namespace KoalaDev.UGIS.UI
             items.Clear();
         }
         
-        public bool RemoveItem(InventoryUIItem uiItem)
+        public bool RemoveItem(InventoryUIItem uiItem, bool destroyItem = false)
         {
             if (grid.RemoveItem(uiItem.InvItem))
             {
@@ -163,6 +163,10 @@ namespace KoalaDev.UGIS.UI
                 }
                 
                 items.Remove(uiItem.gameObject);
+                
+                if(destroyItem)
+                    Destroy(uiItem.gameObject);
+                
                 return true;
             }
 
@@ -212,6 +216,8 @@ namespace KoalaDev.UGIS.UI
                 Generate();
             }
         }
+
+        public InventoryUIStyle GetStyle => style;
 
         private Vector2 GetAveragePosition(IReadOnlyCollection<Vector2Int> input)
         {

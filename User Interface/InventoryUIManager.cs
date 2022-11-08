@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using KoalaDev.Utilities.Data;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace KoalaDev.UGIS.UI
 {
@@ -13,12 +12,22 @@ namespace KoalaDev.UGIS.UI
         public static InventoryUIManager Instance;
         
         private HeldItemData heldItem;
+        private InventoryUIItem selectedItem;
 
         [SerializeField] private Transform heldItemContainer;
 
         public List<InventoryGrid> managedGrids;
 
         public List<Item> startingItems;
+
+        #region - INTERACTIONS -
+
+        private InventoryUIContextMenu currentContextMenu;
+
+        public Interaction dropItemInteraction;
+        public Interaction equipItemInteraction;
+
+        #endregion
 
         #endregion
 
@@ -35,15 +44,22 @@ namespace KoalaDev.UGIS.UI
 
             foreach (InventoryGrid grid in managedGrids)
             {
-                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
-                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
-                grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
+                for (int i = 0; i < 12; i++)
+                {
+                    grid.AutoAddItem(new InventoryItem(startingItems[Random.Range(0, startingItems.Count)], null, grid));
+                }
             }
+
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            
+            dropItemInteraction.Interact += DropItem;
+        }
+
+        private void OnDisable()
+        {
+            dropItemInteraction.Interact -= DropItem;
         }
 
         private void Update()
@@ -57,9 +73,14 @@ namespace KoalaDev.UGIS.UI
         #endregion
 
         #region --- METHODS ---
-        
+
         public void SlotClick(InventoryUISlot slot)
         {
+            if (currentContextMenu != null)
+            {
+                currentContextMenu.RemoveMenu();
+            }
+            
             if (heldItem == null && slot.containedItem != null)
             {
                 GrabItem(slot);
@@ -96,6 +117,45 @@ namespace KoalaDev.UGIS.UI
             if(!slot.grid.AddItemAtPosition(heldItem.UIItem, slot.slotPosition - heldItem.GridOffset)) return;
             
             heldItem = null;
+        }
+
+        public void DropItem()
+        {
+            Debug.Log($"Dropped Item! {selectedItem.InvItem.Item.name}");
+            selectedItem.uiGrid.RemoveItem(selectedItem, true);
+            selectedItem = null;
+        }
+
+        #endregion
+
+        #region --- ITEM ACTIONS ---
+        
+        public void CreateContextMenu(InventoryUISlot slot, Vector2 clickPos)
+        {
+            if (heldItem != null) return;
+            
+            if (currentContextMenu != null)
+            {
+                Destroy(currentContextMenu.gameObject);
+            }
+
+            selectedItem = slot.containedItem;
+            
+            if (selectedItem == null) return;
+            
+            GameObject contextMenuObj = Instantiate(slot.grid.GetStyle.menuObj, transform);
+
+            // Rebuild Layout to Correctly Set Menu Position
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contextMenuObj.GetComponent<RectTransform>());
+
+            contextMenuObj.GetComponent<RectTransform>().pivot = new Vector2(0, 1);
+            contextMenuObj.transform.position = clickPos;
+
+            InventoryUIContextMenu contextMenu = contextMenuObj.AddComponent<InventoryUIContextMenu>();
+
+            contextMenu.invUIItem = slot.containedItem;
+
+            currentContextMenu = contextMenu;
         }
 
         #endregion
