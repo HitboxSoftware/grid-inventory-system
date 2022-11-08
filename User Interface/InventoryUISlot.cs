@@ -35,7 +35,7 @@ namespace KoalaDev.UGIS.UI
                     InventoryUIManager.Instance.SlotClick(this);
                     break;
                 case PointerEventData.InputButton.Right:
-                    //Context Menu Logic
+                    InventoryUIManager.Instance.CreateContextMenu(this, eventData.position);
                     break;
             }
         }

@@ -20,6 +20,11 @@ namespace KoalaDev.UGIS.UI
         public bool highlightOnHover = false;
         public Color slotHighlightColour = Color.white;
 
+        [Header("Context Menu")] 
+        public GameObject menuObj;
+
+        public GameObject actionObj;
+
         #endregion
     }
 

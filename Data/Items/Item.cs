@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using KoalaDev.Utilities.Data;
 using UnityEngine;
 
 namespace KoalaDev.UGIS
@@ -12,6 +14,9 @@ namespace KoalaDev.UGIS
         public Vector2Int size = Vector2Int.one;
         public Sprite icon;
         public GameObject worldObject;
+
+        // Stores all the possible interactions related to the item.
+        public InteractionProfile InteractionProfile;
 
         #endregion
     }
