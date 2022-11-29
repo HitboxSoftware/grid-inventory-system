@@ -22,23 +22,18 @@ namespace KoalaDev.UGIS.UI
         #endregion
 
         #region --- METHODS ---
-
-        public InventoryUIContextMenu(InventoryUIItem invUIItem)
-        {
-            this.invUIItem = invUIItem;
-        }
-
+        
         private void Generate()
         {
-            if (invUIItem.InvItem.Item.InteractionProfile.Interactions.Length <= 0) 
+            if (invUIItem.InvItem.Item.interactionProfile.Interactions.Length <= 0) 
                 Destroy(gameObject);
             
-            InventoryInteraction[] interactions = (from interaction in invUIItem.InvItem.Item.InteractionProfile.Interactions
+            InventoryInteractionChannel[] interactions = (from interaction in invUIItem.InvItem.Item.interactionProfile.Interactions
                 where interaction != null
-                where interaction.GetType() == typeof(InventoryInteraction)
-                select (InventoryInteraction)interaction).ToArray();
+                where interaction.GetType() == typeof(InventoryInteractionChannel)
+                select (InventoryInteractionChannel)interaction).ToArray();
 
-            foreach (InventoryInteraction interaction in interactions)
+            foreach (InventoryInteractionChannel interaction in interactions)
             {
                 InventoryUIContextButton interactionBtn = Instantiate(invUIItem.uiGrid.GetStyle.actionObj, transform).GetComponent<InventoryUIContextButton>();
                 interactionBtn.action = interaction;
@@ -50,7 +45,6 @@ namespace KoalaDev.UGIS.UI
         public static void RemoveMenu()
         {
             InventoryUIManager.Instance.RemoveContextMenu();
-            
         }
 
         #endregion

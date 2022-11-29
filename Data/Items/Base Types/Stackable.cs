@@ -16,11 +16,41 @@ namespace KoalaDev.UGIS.Items
         public int stackCapacity;
 
         #endregion
+
+        #region --- METHODS ---
+        public override AdditionalItemData GetAdditionalData => new StackableItemData();
+
+        public override (InventoryItem, InventoryItem) ItemToItem(InventoryItem invItem1, InventoryItem invItem2)
+        {
+            // --- RETURN CLAUSES ---
+            
+            // Return if either item doesn't exist
+            if (invItem1 == null || invItem2 == null) return (invItem1, invItem2);
+            // Return if items aren't the same
+            if (invItem1.Item != invItem2.Item) return (invItem1, invItem2);
+            // Return if the target is not stackable
+            if (invItem1.Item is not Stackable stackItem) return (invItem1, invItem2);
+            
+            // --- LOGIC ---
+            
+            // Getting Stackable Item Data.
+            StackableItemData stackData = (StackableItemData)invItem1.ItemData;
+
+            // If no space, return.
+            if (stackData.currentStackCount >= stackItem.stackCapacity) return (invItem1, invItem2);
+
+            // Incrementing Stack Count
+            stackData.currentStackCount += ((StackableItemData)invItem2.ItemData).currentStackCount;
+            
+            return (invItem1, null);
+        }
+
+        #endregion
     }
 
     [Serializable]
-    public abstract class StackableItemData : AdditionalItemData
+    public class StackableItemData : AdditionalItemData
     {
-        public int currentStackCount;
+        public int currentStackCount = 1;
     }
 }

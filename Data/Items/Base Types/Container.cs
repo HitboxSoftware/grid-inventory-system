@@ -17,14 +17,16 @@ namespace KoalaDev.UGIS.Items
         
         // Makes itemBlacklist a whitelist, meaning only items in the list can be added.
         public bool blacklistIsWhitelist; 
+        
+        public override AdditionalItemData GetAdditionalData => new ContainerItemData();
 
         #endregion
     }
 
     [Serializable]
-    public abstract class ContainerItemData : AdditionalItemData
+    public class ContainerItemData : AdditionalItemData
     {
-        private InventoryGrid containerGrid;
+        public InventoryGrid containerGrid;
     }
 
 }

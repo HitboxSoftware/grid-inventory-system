@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace KoalaDev.UGIS
@@ -35,11 +36,13 @@ namespace KoalaDev.UGIS
 
         #region --- CONSTRUCTOR ---
         
-        public InventoryItem(Item item, Vector2Int[] takenSlots, InventoryGrid parentGrid)
+        public InventoryItem(Item item, InventoryGrid parentGrid, Vector2Int[] takenSlots = null, AdditionalItemData itemData = null)
         {
             Item = item;
             TakenSlots = takenSlots;
             this.parentGrid = parentGrid;
+            
+            ItemData = itemData ?? Item.GetAdditionalData;
         }
 
         #endregion
