@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace KoalaDev.UGIS.UI
 {
-    public class InventoryUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class InventoryUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         #region VARIABLES
 
@@ -27,7 +27,7 @@ namespace KoalaDev.UGIS.UI
             
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             switch (eventData.button)
             {
