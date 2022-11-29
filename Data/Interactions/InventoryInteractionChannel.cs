@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KoalaDev.UGIS.Interactions
 {
     [CreateAssetMenu(fileName = "New Inventory Interaction", menuName = "KoalaDev/UGIS/Interactions/Inventory Interaction")]
-    public class InventoryInteraction : Interaction
+    public class InventoryInteractionChannel : InteractionChannel
     {
         
     }
