@@ -12,10 +12,16 @@ namespace KoalaDev.UGIS.Items
         public int maxDurability = 100;
 
         #endregion
+
+        #region --- METHODS ---
+
+        public override AdditionalItemData GetAdditionalData => new DamageableItemData();
+
+        #endregion
     }
 
     [Serializable]
-    public abstract class DamageableItemData : AdditionalItemData
+    public class DamageableItemData : AdditionalItemData
     {
         public float currentDurability;
     }

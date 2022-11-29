@@ -5,13 +5,12 @@ using UnityEngine;
 
 namespace InventorySystem.UI
 {
-    [CustomEditor(typeof(InventoryGrid))]
-
-    public class InventoryGridEditor : Editor
+    public class InventoryGridComponentEditor : Editor
     {
         #region --- VARIABLES ---
 
-        private InventoryGrid controller;
+        //private EDITORTYPE controller;
+        private InventoryGrid grid;
         
         private GUISkin skin;
 
@@ -24,6 +23,7 @@ namespace InventorySystem.UI
         #region - SERIALIZED -
 
         private SerializedObject soTarget;
+        private SerializedObject soGrid;
         
         private SerializedProperty gridSize;
 
@@ -55,7 +55,7 @@ namespace InventorySystem.UI
             // Inventory Grid Display
             GUILayout.Label( "Display", skin.GetStyle("header"));
             
-            Vector2Int size = controller.size;
+            Vector2Int size = grid.Size;
             float viewWidth = EditorGUIUtility.currentViewWidth - 10;
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
             Color defaultColour = GUI.color;
@@ -66,9 +66,9 @@ namespace InventorySystem.UI
                 GUILayout.FlexibleSpace();
                 for (int x = 0; x < size.x; x++)
                 {
-                    if (controller.ItemAtSlot(new Vector2Int(x, y)))
+                    if (grid.ItemAtSlot(new Vector2Int(x, y)))
                     {
-                        InventoryItem storedItem = controller.GetItemAtSlot(new Vector2Int(x, y));
+                        InventoryItem storedItem = grid.GetItemAtSlot(new Vector2Int(x, y));
                         if (storedItem != null)
                         {
                             Color color;
@@ -114,14 +114,16 @@ namespace InventorySystem.UI
         {
             skin = Resources.Load<GUISkin>("Skins/KoalaGUISkin");
             // --- Get Target ---
-            controller = (InventoryGrid)target;
+            //controller = (InventoryGridComponent)target;
             soTarget = new SerializedObject(target);
+
+            //grid = controller.Grid;
         }
 
         private void GetProperties()
         {
             // Inventory Grid Properties
-            gridSize = soTarget.FindProperty("size");
+            gridSize = soTarget.FindProperty("Grid").FindPropertyRelative("gridSize");
         }
 
         #endregion

@@ -15,7 +15,7 @@ public class InventoryUIContextButton : MonoBehaviour
     public Button btn;
     
     // Inventory Scripts
-    public InventoryInteraction action;
+    public InventoryInteractionChannel action;
     public InventoryUIContextMenu parentMenu;
 
     #endregion
