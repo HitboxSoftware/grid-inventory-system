@@ -15,7 +15,7 @@ MonoBehaviour:
   size: {x: 2, y: 1}
   icon: {fileID: 21300000, guid: daad930f531ec7d488d29ae35e5b7be0, type: 3}
   worldObject: {fileID: 0}
-  InteractionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
+  interactionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
   weaponPrefab: {fileID: 0}
   supportedMagazines: []
   attachmentSlots: []

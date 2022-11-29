@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotObj: {fileID: 4747618987845106621, guid: 4768dc7d018cbab459b6ef67f71e5907, type: 3}
   itemObj: {fileID: 4747618987845106621, guid: 06ceec11096ed944bb6e520f408085bc, type: 3}
+  gridObj: {fileID: 9219368071428893166, guid: c31925a3a2c14dc49957928b0733d186, type: 3}
   highlightOnHover: 0
-  slotHighlightColour: {r: 1, g: 1, b: 1, a: 1}
+  slotHighlightColour: {r: 1, g: 0.86503386, b: 0.19339621, a: 1}
   menuObj: {fileID: 3399987125982187392, guid: d2989f4814f874d4cae7ce2b17eb5e87, type: 3}
   actionObj: {fileID: 5014461722734782992, guid: b1489d2d151a2ed4ab8ee19cee2b5901, type: 3}

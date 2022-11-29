@@ -15,7 +15,7 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   icon: {fileID: 21300000, guid: b43c380bdf6af1a4693787c65cc475ce, type: 3}
   worldObject: {fileID: 0}
-  InteractionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
+  interactionProfile: {fileID: 11400000, guid: 664b50617c290854bb9fbaf3e10b145c, type: 2}
   attachmentPrefab: {fileID: 0}
   attachmentType: 0
   capacity: 17

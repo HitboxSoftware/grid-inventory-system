@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FMJ
   m_EditorClassIdentifier: 
   size: {x: 1, y: 1}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a2a162bd9b44f3e4b9e51cc48bb6112d, type: 3}
   worldObject: {fileID: 0}
-  maxStackSize: 50
-  bulletCartridge: {fileID: 11400000, guid: 3acf6d6e4e9cc5e45afbb57249267b57, type: 2}
+  interactionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
+  stackCapacity: 60
+  bulletCaliber: {fileID: 11400000, guid: 26908ccd866339e48aa73e4ef7982fa5, type: 2}
   muzzleVelocityOffset: 0
   muzzleVelocityMultiplier: 1
