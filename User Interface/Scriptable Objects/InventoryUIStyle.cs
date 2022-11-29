@@ -15,6 +15,8 @@ namespace KoalaDev.UGIS.UI
         public GameObject slotObj;
         // Prefab used for each item in the grid.
         public GameObject itemObj;
+        // Prefab used for grid objects
+        public GameObject gridObj;
 
         [Header("Item Properties")] 
         public bool highlightOnHover = false;

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a44a4f12dcc5d640a347266abed311e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5ad040e9757d847b030d5515e5764c, type: 3}
   m_Name: Backpack
   m_EditorClassIdentifier: 
   size: {x: 3, y: 3}

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93bd23d59481fdc478204bd015f683fc, type: 3}
+  m_Script: {fileID: 11500000, guid: dd43eb6a88826884b8b6af018c135aa0, type: 3}
   m_Name: Pistol_Magazine
   m_EditorClassIdentifier: 
   size: {x: 1, y: 1}
@@ -17,7 +17,6 @@ MonoBehaviour:
   worldObject: {fileID: 0}
   interactionProfile: {fileID: 11400000, guid: 664b50617c290854bb9fbaf3e10b145c, type: 2}
   attachmentPrefab: {fileID: 0}
-  attachmentType: 0
-  capacity: 17
-  acceptedCartridges:
-  - {fileID: 11400000, guid: 26908ccd866339e48aa73e4ef7982fa5, type: 2}
+  attachmentType: 1
+  capacity: 0
+  acceptedCartridges: []
