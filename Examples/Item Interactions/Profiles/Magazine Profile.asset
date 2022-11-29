@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a64e24a3c0be0b489c693b4fe915e58, type: 3}
+  m_Name: Magazine Profile
+  m_EditorClassIdentifier: 
+  Interactions:
+  - {fileID: 11400000, guid: 5ae210f380daff74aa819a9109fcb3a4, type: 2}
+  - {fileID: 11400000, guid: bb6bfd161103e0e4e9502fdd58e5a24e, type: 2}
+  - {fileID: 11400000, guid: ed24c43bb6f15c447adf30980546f0db, type: 2}
