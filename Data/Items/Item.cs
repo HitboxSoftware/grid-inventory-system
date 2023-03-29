@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using KoalaDev.Utilities.Data;
+using Hitbox.Utilities.Data;
 using UnityEngine;
 
-namespace KoalaDev.UGIS
+namespace Hitbox.UGIS
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "KoalaDev/UGIS/Items/Base")]
+    [CreateAssetMenu(fileName = "New Item", menuName = "Hitbox/UGIS/Items/Base")]
     public abstract class Item : ScriptableObject
     {
         #region --- VARIABLES ---
@@ -24,20 +24,20 @@ namespace KoalaDev.UGIS
         
         #region --- METHODS ---
 
-        public virtual AdditionalItemData GetAdditionalData => new ();
-        public virtual (InventoryItem, InventoryItem) ItemToItem(InventoryItem invItem1, InventoryItem invItem2) { return (invItem1, invItem2); }
+        public virtual ItemRuntimeData GetRuntimeData => new ();
+        public virtual (InventoryItem, InventoryItem) ResolveItemCombine(InventoryItem target, InventoryItem placedItem) { return (target, placedItem); }
 
         public void Updated()
         {
             OnUpdate?.Invoke();
         }
-
+        
         #endregion
     }
 
     [Serializable]
-    public class AdditionalItemData
+    public class ItemRuntimeData
     {
-        
+        public bool rotated;
     }
 }

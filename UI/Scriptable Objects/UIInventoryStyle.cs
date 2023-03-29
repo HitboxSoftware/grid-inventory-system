@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.UI
+namespace Hitbox.UGIS.UI
 {
     [CreateAssetMenu(fileName = "New UI Style", menuName = "KoalaDev/UGIS/New UI Style")]
-    public class InventoryUIStyle : ScriptableObject
+    public class UIInventoryStyle : ScriptableObject
     {
         #region --- VARIABLES ---
 
@@ -18,6 +18,11 @@ namespace KoalaDev.UGIS.UI
         // Prefab used for grid objects
         public GameObject gridObj;
 
+        [Header("Grid Properties")] 
+        public Vector2 cellSize = new (60, 60);
+
+        public Vector2 cellSpacing = new (5, 5);
+        
         [Header("Item Properties")] 
         public bool highlightOnHover = false;
         public Color slotHighlightColour = Color.white;

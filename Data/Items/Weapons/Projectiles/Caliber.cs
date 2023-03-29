@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
-    [CreateAssetMenu(fileName = "New Caliber", menuName = "KoalaDev/UGIS/Items/Weapons/Caliber")]
+    [CreateAssetMenu(fileName = "New Caliber", menuName = "Hitbox/UGIS/Items/Weapons/Caliber")]
     public class Caliber : ScriptableObject
     {
         #region --- VARIABLES ---

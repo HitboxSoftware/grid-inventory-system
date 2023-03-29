@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9219368071428893162}
   - component: {fileID: 9219368071428893159}
   - component: {fileID: 9219368071428893158}
-  - component: {fileID: 6277934201669111833}
+  - component: {fileID: 8125874869790907884}
   m_Layer: 5
   m_Name: InventoryGrid
   m_TagString: Untagged
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 1
---- !u!114 &6277934201669111833
+--- !u!114 &8125874869790907884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,10 +126,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9219368071428893166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 654ae00c5adf0a7458116abd3b4127cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 87acb4767c51faa469dc3157418f3386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  style: {fileID: 0}
-  generateOnStart: 0
+  style: {fileID: 11400000, guid: 49b4a5fa7db99e04fa3698bc5e172659, type: 2}
   size: {x: 1, y: 1}
   startingItems: []

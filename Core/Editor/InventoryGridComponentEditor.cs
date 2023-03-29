@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using KoalaDev.UGIS;
+using Hitbox.UGIS;
 using UnityEditor;
 using UnityEngine;
 

@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 7312126044432931108}
   - component: {fileID: 4450280215283469497}
   - component: {fileID: 5080638632236747350}
-  - component: {fileID: 8101020398514373822}
+  - component: {fileID: 1147866485101612381}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &8101020398514373822
+--- !u!114 &1147866485101612381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,10 +343,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4747618987845106621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd896f0788c56f498ab3fadd20c3ebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ca9edb2ff38ae748b4785a44d98b2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiGrid: {fileID: 0}
-  itemIcon: {fileID: 5538232812590263719}
-  itemBackground: {fileID: 4450280215283469497}
-  stackCounterLabel: {fileID: 4652272521522311524}
+  CurrentTakenSlots: []
+  icon: {fileID: 5538232812590263719}

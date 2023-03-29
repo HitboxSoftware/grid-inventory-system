@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
-    [CreateAssetMenu(fileName = "New Bullet", menuName = "KoalaDev/UGIS/Items/Weapons/Bullet")]
+    [CreateAssetMenu(fileName = "New Bullet", menuName = "Hitbox/UGIS/Items/Weapons/Bullet")]
     public class Bullet : Stackable
     {
         #region --- VARIABLES ---

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace KoalaDev.UGIS
+namespace Hitbox.UGIS
 {
     public class InventoryItem : ISerializationCallbackReceiver
     {
@@ -18,7 +18,7 @@ namespace KoalaDev.UGIS
         #region - RUNTIME DATA -
 
         [NonSerialized]
-        public AdditionalItemData ItemData; // Runtime Data of the given item.
+        public ItemRuntimeData ItemRuntimeData; // Runtime Data of the given item.
         private string additionalItemData; // JSON Serialized ItemData
         private string itemDataType;
 
@@ -34,15 +34,18 @@ namespace KoalaDev.UGIS
 
         public void SetGrid(InventoryGrid grid) => parentGrid = grid;
 
+        public Vector2Int Size => ItemRuntimeData.rotated ? 
+            new Vector2Int(Item.size.y, Item.size.x) : Item.size;
+
         #region --- CONSTRUCTOR ---
         
-        public InventoryItem(Item item, InventoryGrid parentGrid, Vector2Int[] takenSlots = null, AdditionalItemData itemData = null)
+        public InventoryItem(Item item, InventoryGrid parentGrid, Vector2Int[] takenSlots = null, ItemRuntimeData itemData = null)
         {
             Item = item;
             TakenSlots = takenSlots;
             this.parentGrid = parentGrid;
             
-            ItemData = itemData ?? Item.GetAdditionalData;
+            ItemRuntimeData = itemData ?? Item.GetRuntimeData;
         }
 
         #endregion
@@ -51,15 +54,15 @@ namespace KoalaDev.UGIS
 
         public void OnBeforeSerialize()
         {
-            if (ItemData == null) return;
-            additionalItemData = JsonUtility.ToJson(ItemData); 
-            itemDataType = ItemData.GetType().ToString(); // Used to get object type when deserializing data.
+            if (ItemRuntimeData == null) return;
+            additionalItemData = JsonUtility.ToJson(ItemRuntimeData); 
+            itemDataType = ItemRuntimeData.GetType().ToString(); // Used to get object type when deserializing data.
         }
 
         public void OnAfterDeserialize()
         {
             Type type = Type.GetType(itemDataType);
-            ItemData = (AdditionalItemData)JsonUtility.FromJson(additionalItemData, type);
+            ItemRuntimeData = (ItemRuntimeData)JsonUtility.FromJson(additionalItemData, type);
         }
 
         #endregion

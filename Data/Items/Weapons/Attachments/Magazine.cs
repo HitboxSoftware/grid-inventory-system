@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
-    [CreateAssetMenu(fileName = "New Magazine", menuName = "KoalaDev/UGIS/Items/Weapons/Attachments/Magazine")]
+    [CreateAssetMenu(fileName = "New Magazine", menuName = "Hitbox/UGIS/Items/Weapons/Attachments/Magazine")]
     public class Magazine : Attachment
     {
         #region --- VARIABLES ---
@@ -22,7 +22,7 @@ namespace KoalaDev.UGIS.Items.WeaponSystem
         #region - MAGAZINE UTILITIES -
 
         // Clears, then Fills magazine to given value OR max capacity.
-        public static void FillMagazine(Magazine mag, MagazineItemData magData, Bullet bullet, int count = 0)
+        public static void FillMagazine(Magazine mag, MagazineItemRuntimeData magData, Bullet bullet, int count = 0)
         {
             magData.MagazineStack.Clear();
 
@@ -36,7 +36,7 @@ namespace KoalaDev.UGIS.Items.WeaponSystem
         }
 
         // Loads Magazine with Given Bullet.
-        public static bool LoadBullet(Magazine mag, MagazineItemData magData, Bullet bullet)
+        public static bool LoadBullet(Magazine mag, MagazineItemRuntimeData magData, Bullet bullet)
         {
             if (magData.MagazineStack.Count >= mag.capacity) return false;
             
@@ -46,66 +46,66 @@ namespace KoalaDev.UGIS.Items.WeaponSystem
         }
 
         // Returns null if empty.
-        public static Bullet UnloadBullet(MagazineItemData magazineData)
+        public static Bullet UnloadBullet(MagazineItemRuntimeData magazineItemData)
         {
-            magazineData.MagazineStack.TryPop(out Bullet bullet);
+            magazineItemData.MagazineStack.TryPop(out Bullet bullet);
 
             return bullet;
         }
 
-        public static Bullet[] UnloadMagazine(MagazineItemData magazineData)
+        public static Bullet[] UnloadMagazine(MagazineItemRuntimeData magazineItemData)
         {
-            Bullet[] bullets = magazineData.MagazineStack.ToArray();
+            Bullet[] bullets = magazineItemData.MagazineStack.ToArray();
 
-            magazineData.MagazineStack.Clear();
+            magazineItemData.MagazineStack.Clear();
             
             return bullets;
         }
 
         #endregion
         
-        public override (InventoryItem, InventoryItem) ItemToItem(InventoryItem invItem1, InventoryItem invItem2)
+        public override (InventoryItem, InventoryItem) ResolveItemCombine(InventoryItem target, InventoryItem placedItem)
         {
             // --- RETURN CLAUSES ---
             
             // Return if either item doesn't exist
-            if (invItem1 == null || invItem2 == null) return (invItem1, invItem2);
+            if (target == null || placedItem == null) return (target, placedItem);
             // Return if the target is not magazine
-            if (invItem1.Item is not Magazine magazineItem) return (invItem1, invItem2);
-            // Return if second item is not bullet.
-            if (invItem2.Item is not Bullet bulletItem) return (invItem1, invItem2);
+            if (target.Item is not Magazine magazineItem) return (target, placedItem);
+            // Return if placed item is not bullet.
+            if (placedItem.Item is not Bullet bulletItem) return (target, placedItem);
             // Return if Bullet is not an accepted Caliber.
             if(!Array.Exists(magazineItem.acceptedCartridges, element => element == bulletItem.bulletCaliber)) 
-                return (invItem1, invItem2);
+                return (target, placedItem);
 
             
             // --- LOGIC ---
             
-            StackableItemData bulletData = (StackableItemData)invItem2.ItemData;
+            StackableItemRuntimeData bulletData = (StackableItemRuntimeData)placedItem.ItemRuntimeData;
 
             for (int i = bulletData.currentStackCount; i > 0; i--)
             {
-                if (LoadBullet(magazineItem, (MagazineItemData)invItem1.ItemData, bulletItem))
+                if (LoadBullet(magazineItem, (MagazineItemRuntimeData)target.ItemRuntimeData, bulletItem))
                 {
                     bulletData.currentStackCount--;
                 }
                 else
                 {
-                    invItem2.ItemData = bulletData;
-                    return (invItem1, invItem2);
+                    placedItem.ItemRuntimeData = bulletData;
+                    return (target, placedItem);
                 }
             }
 
-            return (invItem1, null);
+            return (target, null);
         }
         
-        public override AdditionalItemData GetAdditionalData => new MagazineItemData();
+        public override ItemRuntimeData GetRuntimeData => new MagazineItemRuntimeData();
 
         #endregion
     }
 
     // Runtime Data for the Magazine Class.
-    public class MagazineItemData : AdditionalItemData
+    public class MagazineItemRuntimeData : ItemRuntimeData
     {
         public Stack<Bullet> MagazineStack = new Stack<Bullet>(); // Index corresponds to position in magazine. First in, Last out
     }

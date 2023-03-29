@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f2f125c72df084582cbb1c21c14f17, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 1}
+  size: {x: 4, y: 2}
   icon: {fileID: 21300000, guid: daad930f531ec7d488d29ae35e5b7be0, type: 3}
   worldObject: {fileID: 0}
   interactionProfile: {fileID: 11400000, guid: 264bd8cbb684f494f976e0cc8278e39c, type: 2}
   weaponPrefab: {fileID: 0}
   supportedMagazines:
-  - {fileID: 11400000, guid: 9ee3c005e5510bf45a62cb7923b4fcd0, type: 2}
+  - {fileID: 11400000, guid: 5048f6ab0a5750b429a2f1fe63c0fcde, type: 2}
   attachmentSlots:
   - name: Magazine
     slotPosition: {x: 0, y: 0, z: 0}

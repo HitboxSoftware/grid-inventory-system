@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a64e24a3c0be0b489c693b4fe915e58, type: 3}
   m_Name: Magazine Profile
   m_EditorClassIdentifier: 
-  Interactions:
+  interactions:
   - {fileID: 11400000, guid: 0f739a94b61f75d4d818f25af19ea558, type: 2}
   - {fileID: 11400000, guid: a84273854d55fb045aeeb8650d909794, type: 2}
   - {fileID: 11400000, guid: 7a21754f79bf30b4fa9917a119392633, type: 2}
