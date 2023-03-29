@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137f7d6c7dc9dee4591b821fd286d88d, type: 3}
   m_Name: DefaultStyle
   m_EditorClassIdentifier: 
-  slotObj: {fileID: 4747618987845106621, guid: 4803844a737c1b7439adaf7bffb69903, type: 3}
-  itemObj: {fileID: 4747618987845106621, guid: 5698f8d3b866bfe43bbcb4689cc0d378, type: 3}
-  gridObj: {fileID: 9219368071428893166, guid: c31925a3a2c14dc49957928b0733d186, type: 3}
+  slotObj: {fileID: 4747618987845106621, guid: 595fa77fba5874d4a9fc3c606ed62095, type: 3}
+  itemObj: {fileID: 4747618987845106621, guid: aece0386ec123cd45ad8c99847e132ca, type: 3}
+  gridObj: {fileID: 9219368071428893166, guid: af87bc24332d9c943aede71b5a25c4ef, type: 3}
+  cellSize: {x: 60, y: 60}
+  cellSpacing: {x: 5, y: 5}
   highlightOnHover: 0
   slotHighlightColour: {r: 1, g: 1, b: 1, a: 1}
-  menuObj: {fileID: 3399987125982187392, guid: 4a8f67e1674b3cb4091418fb08e4d9b7, type: 3}
-  actionObj: {fileID: 5014461722734782992, guid: eddae75e473bf9340a96eea85fd1dbd5, type: 3}
+  menuObj: {fileID: 3399987125982187392, guid: fe6b41694f5ce70479804f61574e3f93, type: 3}
+  actionObj: {fileID: 5014461722734782992, guid: 8eeaaac902038df4c93175653be5cf65, type: 3}

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items
+namespace Hitbox.UGIS.Items
 {
     public class Damageable : Item
     {
@@ -15,13 +15,13 @@ namespace KoalaDev.UGIS.Items
 
         #region --- METHODS ---
 
-        public override AdditionalItemData GetAdditionalData => new DamageableItemData();
+        public override ItemRuntimeData GetRuntimeData => new DamageableItemRuntimeData();
 
         #endregion
     }
 
     [Serializable]
-    public class DamageableItemData : AdditionalItemData
+    public class DamageableItemRuntimeData : ItemRuntimeData
     {
         public float currentDurability;
     }

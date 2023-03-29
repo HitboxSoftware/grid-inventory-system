@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items
+namespace Hitbox.UGIS.Items
 {
     public abstract class Stackable : Item
     {
@@ -18,38 +18,38 @@ namespace KoalaDev.UGIS.Items
         #endregion
 
         #region --- METHODS ---
-        public override AdditionalItemData GetAdditionalData => new StackableItemData();
+        public override ItemRuntimeData GetRuntimeData => new StackableItemRuntimeData();
 
-        public override (InventoryItem, InventoryItem) ItemToItem(InventoryItem invItem1, InventoryItem invItem2)
+        public override (InventoryItem, InventoryItem) ResolveItemCombine(InventoryItem target, InventoryItem placedItem)
         {
             // --- RETURN CLAUSES ---
             
             // Return if either item doesn't exist
-            if (invItem1 == null || invItem2 == null) return (invItem1, invItem2);
+            if (target == null || placedItem == null) return (target, placedItem);
             // Return if items aren't the same
-            if (invItem1.Item != invItem2.Item) return (invItem1, invItem2);
+            if (target.Item != placedItem.Item) return (target, placedItem);
             // Return if the target is not stackable
-            if (invItem1.Item is not Stackable stackItem) return (invItem1, invItem2);
+            if (target.Item is not Stackable stackItem) return (target, placedItem);
             
             // --- LOGIC ---
             
             // Getting Stackable Item Data.
-            StackableItemData stackData = (StackableItemData)invItem1.ItemData;
+            StackableItemRuntimeData stackData = (StackableItemRuntimeData)target.ItemRuntimeData;
 
             // If no space, return.
-            if (stackData.currentStackCount >= stackItem.stackCapacity) return (invItem1, invItem2);
+            if (stackData.currentStackCount >= stackItem.stackCapacity) return (target, placedItem);
 
             // Incrementing Stack Count
-            stackData.currentStackCount += ((StackableItemData)invItem2.ItemData).currentStackCount;
+            stackData.currentStackCount += ((StackableItemRuntimeData)placedItem.ItemRuntimeData).currentStackCount;
             
-            return (invItem1, null);
+            return (target, null);
         }
 
         #endregion
     }
 
     [Serializable]
-    public class StackableItemData : AdditionalItemData
+    public class StackableItemRuntimeData : ItemRuntimeData
     {
         public int currentStackCount = 1;
     }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
-    [CreateAssetMenu(fileName = "New Sight", menuName = "KoalaDev/UGIS/Items/Weapons/Attachments/Sight")]
+    [CreateAssetMenu(fileName = "New Sight", menuName = "Hitbox/UGIS/Items/Weapons/Attachments/Sight")]
     public class Sight : Attachment
     {
         #region --- VARIABLES ---

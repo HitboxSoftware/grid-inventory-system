@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
-    [CreateAssetMenu(fileName = "New Weapon", menuName = "KoalaDev/UGIS/Items/Weapons/Weapon")]
+    [CreateAssetMenu(fileName = "New Weapon", menuName = "Hitbox/UGIS/Items/Weapons/Weapon")]
     public class Weapon : Item
     {
         #region --- VARIABLES ---

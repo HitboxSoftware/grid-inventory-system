@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.Items.WeaponSystem
+namespace Hitbox.UGIS.Items.WeaponSystem
 {
     public class Attachment : Item
     {

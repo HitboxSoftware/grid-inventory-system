@@ -1,14 +1,15 @@
 using System.Linq;
-using KoalaDev.UGIS.Interactions;
+using Hitbox.UGIS.Interactions;
+using Hitbox.UI;
 using UnityEngine;
 
-namespace KoalaDev.UGIS.UI
+namespace Hitbox.UGIS.UI.ContextMenu
 {
-    public class InventoryUIContextMenu : MonoBehaviour
+    public class UIInventoryContextMenu : MonoBehaviour
     {
         #region --- VARIABLES ---
 
-        public InventoryUIItem invUIItem;
+        public UIInventoryItem invUIItem;
 
         #endregion
 
@@ -25,17 +26,17 @@ namespace KoalaDev.UGIS.UI
         
         private void Generate()
         {
-            if (invUIItem.InvItem.Item.interactionProfile.Interactions.Length <= 0) 
+            if (invUIItem.InvItem.Item.interactionProfile.interactions.Length <= 0) 
                 Destroy(gameObject);
             
-            InventoryInteractionChannel[] interactions = (from interaction in invUIItem.InvItem.Item.interactionProfile.Interactions
+            InventoryInteractionChannel[] interactions = (from interaction in invUIItem.InvItem.Item.interactionProfile.interactions
                 where interaction != null
                 where interaction.GetType() == typeof(InventoryInteractionChannel)
                 select (InventoryInteractionChannel)interaction).ToArray();
 
             foreach (InventoryInteractionChannel interaction in interactions)
             {
-                InventoryUIContextButton interactionBtn = Instantiate(invUIItem.uiGrid.GetStyle.actionObj, transform).GetComponent<InventoryUIContextButton>();
+                UIInventoryContextButton interactionBtn = Instantiate(invUIItem.UIGrid.Style.actionObj, transform).GetComponent<UIInventoryContextButton>();
                 interactionBtn.action = interaction;
                 interactionBtn.label.text = interaction.name;
                 interactionBtn.parentMenu = this;
@@ -44,7 +45,7 @@ namespace KoalaDev.UGIS.UI
 
         public static void RemoveMenu()
         {
-            InventoryUIManager.Instance.RemoveContextMenu();
+            UIInventoryManager.Instance.RemoveContextMenu();
         }
 
         #endregion
