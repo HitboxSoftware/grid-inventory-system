@@ -16,8 +16,12 @@ MonoBehaviour:
   itemObj: {fileID: 4747618987845106621, guid: aece0386ec123cd45ad8c99847e132ca, type: 3}
   gridObj: {fileID: 9219368071428893166, guid: af87bc24332d9c943aede71b5a25c4ef, type: 3}
   cellSize: {x: 60, y: 60}
-  cellSpacing: {x: 5, y: 5}
-  highlightOnHover: 0
-  slotHighlightColour: {r: 1, g: 1, b: 1, a: 1}
+  cellSpacing: {x: 0, y: 0}
+  highlightOnHover: 1
+  slotColour: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.11764706}
+  slotPositiveHighlightColour: {r: 0.16220185, g: 0.4245283, b: 0.19348562, a: 0.15686275}
+  slotNegativeHighlightColour: {r: 0.6886792, g: 0.15917587, b: 0.15917587, a: 0.15686275}
+  slotNeutralHighlightColour: {r: 0.6698113, g: 0.46187612, b: 0.18009077, a: 0.15686275}
   menuObj: {fileID: 3399987125982187392, guid: fe6b41694f5ce70479804f61574e3f93, type: 3}
-  actionObj: {fileID: 5014461722734782992, guid: 8eeaaac902038df4c93175653be5cf65, type: 3}
+  actionObj: {fileID: 4434626797071083997, guid: e6863cf72a175b7469135327e232344b,
+    type: 3}

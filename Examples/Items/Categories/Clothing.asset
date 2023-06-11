@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8987ec3cf407a418b5151eafc19e0f, type: 3}
+  m_Name: Clothing
+  m_EditorClassIdentifier: 
+  description: 
+  icon: {fileID: 21300000, guid: daca2fe82867ff6459c5cc4c1ee46e3b, type: 3}
+  subCategories:
+  - {fileID: 11400000, guid: f720d53fe3e09c548820ab741483755d, type: 2}
+  - {fileID: 11400000, guid: 4a440fe0a6101194295a52541abd94f5, type: 2}
+  - {fileID: 11400000, guid: d1b1a0d1bfb64034493b8bb387fa72f8, type: 2}
+  - {fileID: 11400000, guid: 7e32f608a6a395743abbb34a0e4b63ee, type: 2}
+  - {fileID: 11400000, guid: 0f4ae6199645bbc46bb0a310fc26b1bb, type: 2}
+  - {fileID: 11400000, guid: 422b144aa5b384e4998d1edb0db35205, type: 2}
+  - {fileID: 11400000, guid: 0596284c1da9e024d8ce7e4d2d1f6ca2, type: 2}
+  - {fileID: 11400000, guid: c0a21098ce6d3584989e83a02e76ea7b, type: 2}
+  - {fileID: 11400000, guid: 387283a3de28f0940b7100b6c51ea6ff, type: 2}

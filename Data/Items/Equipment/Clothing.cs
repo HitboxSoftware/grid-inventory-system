@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hitbox.UGIS.Items.Equipment
+namespace Hitbox.Inventory.Items.Equipment
 {
-    [CreateAssetMenu(fileName = "New Clothing", menuName = "Hitbox/UGIS/Items/Equipment/Clothing")]
-    public class Clothing : Container
+    [CreateAssetMenu(fileName = "New Clothing", menuName = "Hitbox/Inventory/Items/Equipment/Clothing")]
+    public class Clothing : ContainerItem
     {
         #region --- VARIABLES ---
 

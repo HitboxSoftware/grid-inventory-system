@@ -1,43 +1,52 @@
-using System;
-using System.Collections.Generic;
+using Hitbox.Inventory.Categories;
 using Hitbox.Utilities.Data;
 using UnityEngine;
 
-namespace Hitbox.UGIS
+namespace Hitbox.Inventory
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "Hitbox/UGIS/Items/Base")]
-    public abstract class Item : ScriptableObject
+    public class Item : ScriptableObject
     {
         #region --- VARIABLES ---
-
-        [Header("Item Properties")] public Vector2Int size = Vector2Int.one;
+        
+        [Header("Item Properties")]
+        public Vector2Int size = Vector2Int.one;
+        public ushort id;
         public Sprite icon;
+        public string description;
         public GameObject worldObject;
-        
-        // Stores all the possible interactions related to the item.
-        public InteractionProfile interactionProfile;
-        
-        // --- EVENTS ---
-        public event Action OnUpdate;
+        public ItemCategory category;
+        [HideInInspector] public ItemDatabase parentDatabase; // This should always be set by the database upon insertion.
+
+        /// <summary>
+        /// Invoked whenever an item has been updated.
+        /// </summary>
+        public event System.Action Updated;
 
         #endregion
-        
+
         #region --- METHODS ---
-
-        public virtual ItemRuntimeData GetRuntimeData => new ();
-        public virtual (InventoryItem, InventoryItem) ResolveItemCombine(InventoryItem target, InventoryItem placedItem) { return (target, placedItem); }
-
-        public void Updated()
-        {
-            OnUpdate?.Invoke();
-        }
         
-        #endregion
-    }
+        /// <summary>
+        /// Creates a new runtime data object, override this when implementing custom runtime data.
+        /// </summary>
+        public virtual InventoryItem CreateItem => new (this);
 
-    [Serializable]
-    public class ItemRuntimeData
-    {
-        public bool rotated;
+        /// <summary>
+        /// Attempts to combine two items together allowing for logic such as element stacking.
+        /// </summary>
+        /// <param name="itemToCombine">The item being combined</param>
+        /// <param name="combineRecipient">The target of the combination</param>
+        /// <returns>(bool, bool) where true is combined</returns>
+        public virtual (bool, bool) TryCombineItems(InventoryItem itemToCombine, InventoryItem combineRecipient) { return (false, false); }
+
+        /// <summary>
+        /// This is called whenever an item has been updated so that the frontend can be notified.
+        /// </summary>
+        public void OnUpdate()
+        {
+            Updated?.Invoke();
+        }
+
+        #endregion
     }
 }
