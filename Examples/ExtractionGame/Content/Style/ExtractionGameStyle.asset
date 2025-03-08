@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137f7d6c7dc9dee4591b821fd286d88d, type: 3}
+  m_Name: ExtractionGameStyle
+  m_EditorClassIdentifier: 
+  slotObj: {fileID: 4747618987845106621, guid: 595fa77fba5874d4a9fc3c606ed62095, type: 3}
+  itemObj: {fileID: 4747618987845106621, guid: aece0386ec123cd45ad8c99847e132ca, type: 3}
+  gridObj: {fileID: 9219368071428893166, guid: af87bc24332d9c943aede71b5a25c4ef, type: 3}
+  highlightObject: {fileID: 4747618987845106621, guid: 595fa77fba5874d4a9fc3c606ed62095,
+    type: 3}
+  cellSize: {x: 50, y: 50}
+  cellSpacing: {x: 0, y: 0}
+  highlightOnHover: 0
+  slotColour: {r: 0.4509804, g: 0.4509804, b: 0.4509804, a: 0.5882353}
+  slotPositiveHighlightColour: {r: 0.16220185, g: 0.4245283, b: 0.19348562, a: 0.39215687}
+  slotNegativeHighlightColour: {r: 0.6886792, g: 0.15917587, b: 0.15917587, a: 0.39215687}
+  slotNeutralHighlightColour: {r: 1, g: 0.658, b: 0.19339621, a: 0.39215687}
+  slotHoverHighlightColour: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0.39215687}
+  slotHighlightSprite: {fileID: 21300000, guid: e3a0bdae51365af40a162a84eb79df30,
+    type: 3}
+  menuObj: {fileID: 3399987125982187392, guid: fe6b41694f5ce70479804f61574e3f93, type: 3}
+  actionObj: {fileID: 4434626797071083997, guid: e6863cf72a175b7469135327e232344b,
+    type: 3}
